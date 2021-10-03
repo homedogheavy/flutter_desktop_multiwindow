@@ -3,7 +3,13 @@ import FlutterMacOS
 
 @NSApplicationMain
 class AppDelegate: FlutterAppDelegate {
-  override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-    return true
-  }
+    var _windowManager = WindowManagerPlugin()
+
+    override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
+    }
+    
+    override func applicationDidFinishLaunching(_ notification: Notification) {
+        _windowManager.createNewWindow(key: "base", width: 300, height: 300)
+    }
 }
